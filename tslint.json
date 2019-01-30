@@ -1,0 +1,11 @@
+{
+  // 内置配置项名称
+  "extends": [
+    "tslint-config-standard",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    // 禁止空的block
+    "no-empty": false
+  }
+}
