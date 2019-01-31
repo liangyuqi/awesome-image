@@ -39,11 +39,14 @@ let entry = [
   `./example/index.ts`
 ]
 if (dev === false) {
-
 } else {
   plugins.push(new webpack.HotModuleReplacementPlugin())
 }
+
+plugins.push(new TsConfigPathsPlugin({configFile: "example/tsconfig.json"}))
+
 module.exports = {
+  mode: 'development',
   entry: {
     index: entry
   },
@@ -79,19 +82,23 @@ module.exports = {
   },
   plugins: plugins,
   devServer: {
+    // hot: true,
+    // contentBase: resolve(__dirname, 'example'),
+    // port: serverPort,
+    // publicPath: '/',
+    // open: true,
+    // stats: 'errors-only',
+    // quiet: false,
+    // noInfo: true,
+    // inline: true,
+    // lazy: false,
+    // headers: {
+    //   'Access-Control-Allow-Origin': '*'
+    // },
     hot: true,
-    contentBase: resolve(__dirname, 'src'),
+    contentBase: resolve(__dirname, './example'),
     port: serverPort,
-    publicPath: '/',
-    open: true,
-    stats: 'errors-only',
-    quiet: false,
-    noInfo: true,
-    inline: true,
-    lazy: false,
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    },
+    publicPath: '/'
   }
 
 }
